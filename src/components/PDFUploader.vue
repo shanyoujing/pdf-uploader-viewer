@@ -153,6 +153,8 @@
 }
 
 .scale-controls {
+  position: absolute;
+  left: calc(50% - 190px);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -160,6 +162,28 @@
   background-color: white;
   border-radius: 0.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.scale-input-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  background-color: #f5f5f5;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.scale-input {
+  width: 50px;
+  text-align: right;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.scale-percentage {
+  color: #666;
 }
 
 .pdf-container {
