@@ -26,32 +26,18 @@
 
       <!-- Show PDF and controls when PDF is loaded -->
       <template v-else>
-        <div class="scale-controls-wrapper">
-          <div class="scale-controls">
-            <button @click="decreaseScale" class="scale-button">
-              <MinusIcon class="scale-icon" />
-            </button>
-            
-            <div class="scale-input-container">
-              <input 
-                type="number" 
-                v-model.number="scale" 
-                @change="handleScaleInput"
-                class="scale-input"
-                min="50"
-                max="200"
-                step="10"
-              />
-              <span class="scale-percentage">%</span>
-            </div>
-
-            <button @click="increaseScale" class="scale-button">
-              <PlusIcon class="scale-icon" />
-            </button>
-          </div>
-        </div>
-
         <div class="pdf-container">
+          <div class="scale-controls">
+            <button @click="decreaseScale">−</button>
+            <input 
+              type="text" 
+              class="scale-input" 
+              v-model="scale"
+              @input="handleScaleInput"
+            >
+            <span>%</span>
+            <button @click="increaseScale">+</button>
+          </div>
           <div class="pdf-wrapper" :style="{ transform: `scale(${scale/100})`, transformOrigin: 'top left' }">
             <vue-pdf-embed :source="pdfUrl" class="pdf-viewer" />
           </div>
@@ -153,8 +139,10 @@
 }
 
 .scale-controls {
-  position: absolute;
-  left: calc(50% - 190px);
+  position: fixed;
+  top: 20px;
+  left: 20%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -162,33 +150,38 @@
   background-color: white;
   border-radius: 0.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
 }
 
-.scale-input-container {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  background-color: #f5f5f5;
-  padding: 4px 8px;
-  border-radius: 4px;
+.scale-controls:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .scale-input {
-  width: 50px;
-  text-align: right;
+  width: 45px;
+  text-align: center;
   border: none;
-  background: transparent;
-  padding: 0;
-  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
 }
 
-.scale-percentage {
-  color: #666;
+.scale-controls button {
+  padding: 4px 8px;
+  border: 1px solid #e0e0e0;
+  background-color: white;
+  cursor: pointer;
+}
+
+.scale-controls button:hover {
+  background-color: #e8e8e8;
+  color: #333;
 }
 
 .pdf-container {
-  padding-top: 4rem;
-  min-height: 100%;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  padding: 2rem;
 }
 
 .pdf-wrapper {
@@ -259,6 +252,55 @@
 .message.assistant {
   background-color: #f5f5f5;
   margin-right: auto;
+}
+
+/* PDF page styling */
+.pdf-page {
+  margin: 1rem auto;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: white;
+}
+
+/* Add a modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+.upload-btn {
+  padding: 8px 16px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+
+.upload-btn:hover {
+  background-color: #f8f8f8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Optional: Add an icon if you're using one */
+.upload-icon {
+  width: 16px;
+  height: 16px;
 }
 </style>
 
