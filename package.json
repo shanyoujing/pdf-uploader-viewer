@@ -9,6 +9,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@vercel/toolbar": "^0.1.27",
     "core-js": "^3.8.3",
     "lucide-vue-next": "^0.454.0",
     "openai": "^4.72.0",
@@ -24,7 +25,7 @@
     "eslint-plugin-vue": "^8.0.3",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",
-    "vite": "^5.0.0"
+    "vite": "^5.4.11"
   },
   "eslintConfig": {
     "root": true,

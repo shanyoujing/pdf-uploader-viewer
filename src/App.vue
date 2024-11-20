@@ -1,7 +1,11 @@
 <template>
-  <PDFUploader />
+	<PDFUploader />
 </template>
 
 <script setup>
-import PDFUploader from './components/PDFUploader.vue'
+import { onMounted } from "vue";
+import PDFUploader from "./components/PDFUploader.vue"
+import { mountVercelToolbar } from "@vercel/toolbar/vite"
+
+onMounted(() => mountVercelToolbar())
 </script>
